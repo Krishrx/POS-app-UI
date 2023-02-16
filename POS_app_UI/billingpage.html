@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+    <link rel="stylesheet" href="billingpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+</head>
+<body>
+    <div class="o-container">
+
+        <div class="table-left" id="print-item">
+
+            <div class="total" id="total" style="display: block;">
+                <h3 id="total-price">Total Price :$<span id="table-tp">0.00</span> </h3>
+                <table id="item-list" style="width:100%;border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <!-- style="text-align: right;" -->
+                            <th style="width:40%;text-align: left;">Item</th>
+                            <th style="text-align: right;">Quantity</th>
+                            <th style="text-align: right;">Unit Price</th>
+                            <th style="text-align: right;">Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+        </div>
+
+        <div class="change" id="change" style="display: none;">
+            <h3 id="change-price">Change :$<span id="changePrice">0.00</span></h3>
+            <table id="change-list" style="width:100%;border-collapse: collapse;">
+                <tr>
+                    <td style="width: 90%;"><b>Amount</b></td>
+                    <td style="width: 10%;">$<span id="amt">0.00</span> </td>
+                </tr>
+                <tr>
+                    <td style="width: 90%;"><b>GST Amount</b></td>
+                    <td style="width: 10%;">$<span id="gstamt">0.00</span> </td>
+                </tr>
+            </table>
+            <hr style="border: 1px solid black">
+            <table style="width:100%;border-collapse: collapse;">
+                <tr>
+                    <td style="width: 90%;color: rgb(207, 14, 14);"><b>Payable</b></td>
+                    <td style="width: 10%;color: rgb(207, 14, 14);">$<span id="pay">0.00</span> </td>
+                </tr>
+            </table>
+            <hr style="border: 1px solid black">
+            <table style="width:100%;border-collapse: collapse;">
+                <tr>
+                    <td style="width: 90%;color: blue;"><b>Tender</b></td>
+                    <td style="width: 10%;color: blue;">$<span id="tender">0.00</span> </td>
+                </tr>
+                <tr>
+                    <td style="width: 90%;color: blue;"><b>Change</b></td>
+                    <td style="width: 10%;color: blue;">$<span id="rest">0.00</span> </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+        <div class="table-entry">
+
+            <div class="calcform">
+                <div class="form" style="margin: 8px ;">
+                <label for="itm-no" style="text-align: left;color: blue;font-weight: bold;" >Item Number</label>
+                <label for="qty" style="margin-left: 200px;color: blue;font-weight: bold;">Quantity</label><span id="hidden" style="display:none;"></span>
+                <br>
+                <input type="number" id="itm-no">
+                <input type="number" style="margin-left: 100px;" id="qty" style="border-radius:5px">
+                <button type="button" style="margin-left: 20px;" name="Add" id="add" onclick="addItems()">Add</button>
+                </div>
+
+                <div class="dummy-btn" style="margin: 8px;">
+                    <table>
+                        <tr>
+                            <td>
+                    <button type="button" style="margin: 8px;padding: 3px;" name="Language" id="lang" onclick="alert('Default language: English')">Language</button>
+                    <br>
+                    <label for="table-no" style="margin: 8px;color: rgb(82, 0, 82);font-weight: bold;">Table No</label><br>
+                    <input type="number" style="margin: 8px;width: 80px;" id="table-no"><br>
+                    <label for="noCover" style="margin: 8px;color: rgb(82, 0, 82);font-weight: bold;">No of Cover</label><br>
+                    <input type="number" style="margin: 8px;width: 80px;" id="noCover"><br>
+                            </td>
+                            <td>
+                                <div style="margin-left:40px;margin-right:50px;">
+                                <button type="button" onclick="dis('7')" value="7" style="margin: 5px;padding:5px 15px 0px 15px;">7</button>
+                                <button type="button" onclick="dis('8')" value="8" style="margin: 5px;padding:5px 15px 0px 15px;" >8</button>
+                                <button type="button" onclick="dis('9')" value="9" style="margin: 5px;padding:5px 15px 0px 15px;" >9</button>
+                                <br>
+                                <button type="button" onclick="dis('4')" value="4" style="margin: 5px;padding:5px 15px 0px 15px;" >4</button>
+                                <button type="button" onclick="dis('5')" value="5" style="margin: 5px;padding:5px 15px 0px 15px;" >5</button>
+                                <button type="button" onclick="dis('6')" value="6" style="margin: 5px;padding:5px 15px 0px 15px;" >6</button>
+                                <br>
+                                <button type="button" onclick="dis('1')" value="1" style="margin: 5px;padding:5px 15px 0px 15px;">1</button>
+                                <button type="button" onclick="dis('2')" value="2" style="margin: 5px;padding:5px 15px 0px 15px;" >2</button>
+                                <button type="button" onclick="dis('3')" value="3" style="margin: 5px;padding:5px 15px 0px 15px;" >3</button>
+                                <br>
+                                <button type="button" onclick="dis('0')" value="0" style="margin: 5px;padding:5px 15px 0px 15px;" >0</button>
+                                <button type="button" onclick="dis('.')" value="." style="margin: 5px;padding:5px 19px 0px 15px;" >.</button>
+                                <button type="button" onclick="dis('-')" value="-" style="margin: 5px;padding:5px 19px 0px 15px;">-</button>
+                            </div>
+                            </td>
+                            <td>
+                                <button type="button" onclick="allClear()" style="padding:20px;margin-bottom: 8px;" value="AC"  >AC</button><br>
+                                <button type="button" onclick="clean()" style="padding:20px 14px 20px 14px" value="Clear">Clear</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class="snacks">
+            <div class="scrollup"><button type="button" onclick="scrollup()" id="up"><span style="font-size:25px;color: black;">&#129069;</span></button></div>
+            <div class="eachsnacks" id="d">
+                <div><button type="button" onclick="callButton(this)" value="Streamed Bun">Streamed Bun</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Streamed Timsum">Streamed Timsum</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Deep Fry Timsum">Deep Fry Timsum</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Bake">Bake</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Noodle/Dumplings">Noodle/<br>Dumplings</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Porridge">Porridge</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Beverage">Beverage</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Fry Timsum">Fry Timsum</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Dumplings">Dumplings</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Jam Bun">Jam Bun</button></div>
+                <div><button type="button" onclick="callButton(this)" value="French Fries">French Fries</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Nuggets">Nuggets</button></div>
+                <div><button type="button" onclick="callButton(this)" value="Chips">Chips</button></div>
+            </div>
+            <div class="scrolldown"><button type="button" onclick="scrolldown()" id="down"><span style="font-size:25px;color: black;">&#129071;</span></button></div>
+        </div>
+        <div class="drinks">
+            <div><button type="button" onclick="callButton(this)" value="Coffee Black" ><img src="/images/coffee_full/coffeeblack.jpg"alt="coffee black"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Tea Black"><img src="/images/coffee_full/teablack.jpg"alt="tea black"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Chrysanthemum Tea"><img src="/images/coffee_full/chrysatea.jpg"alt="chrysanthemum tea"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Coffee"><img src="/images/coffee_full/coffee.jpg"alt="coffee"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Tea"><img src="/images/coffee_full/tea.jpg"alt="tea"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Chinese Tea"><img src="/images/coffee_full/chinesetea.jpg"alt="chinese tea"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Iced Coffee Black"><img src="/images/coffee_full/icedcoffeeblack.jpg"alt="iced coffee black"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Iced Tea Black"><img src="/images/coffee_full/icedteablack.jpg"alt="iced tea black"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Soya Milk"><img src="/images/coffee_full/soyamilk.jpg"alt="soya milk"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Iced Coffee"><img src="/images/coffee_full/icedcoffee.jpg"alt="iced coffee"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Iced Tea"><img src="/images/coffee_full/icedtea.jpg"alt="iced tea"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Grass Jelly"><img src="/images/coffee_full/grassjelly.jpg"alt="grass jelly"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Coffee C"><img src="/images/coffee_full/coffeec.jpg"alt="coffec c"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Tea C"><img src="/images/coffee_full/teac.jpg"alt="tea c"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Black & White"><img src="/images/coffee_full/blackwhite.jpg"alt="black white"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Milo"><img src="/images/coffee_full/milo.jpg"alt="milo"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Iced Milo"><img src="/images/coffee_full/icedmilo.jpg"alt="iced milo"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Takeaway (water)"><img src="/images/coffee_full/takeaway.jpg"alt="takeaway water"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Tea"><img src="/images/coffee_full/tea.jpg"alt="tea"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Chinese Tea"><img src="/images/coffee_full/chinesetea.jpg"alt="chinese tea"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Iced Coffee Black"><img src="/images/coffee_full/icedcoffeeblack.jpg"alt="iced coffee black"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Iced Tea Black"><img src="/images/coffee_full/icedteablack.jpg"alt="iced tea black"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Soya Milk"><img src="/images/coffee_full/soyamilk.jpg"alt="soya milk"></button></div>
+            <div><button type="button" onclick="callButton(this)" value="Coffee"><img src="/images/coffee_full/coffee.jpg"alt="coffee"></button></div>
+        </div>
+        <div class="control">
+            <div class="new-bill">
+                <button type="button" onclick="newBill()" id="new-bil" style="background-color: orange;color:white;font-weight: bold;" >New Bill</button>
+            </div>
+            <div class="priceam">
+                <button  type="button" id="pricea" style="background-color: orange;color:white;font-weight: bold;">Price Amendment</button>
+            </div>
+            <div class="twod">
+                <button type="button" onclick="twoDollar()" id="twodollar" style="background-color: orange;color:white;font-weight: bold;">$2</button>
+            </div>
+            <div class="tend">
+                <button type="button" onclick="tenDollar()" id="tendollar" style="background-color: orange;color:white;font-weight: bold;">$10</button>
+            </div>   
+            <div class="opencashbox">
+                <button type="button" id="ocb" style="background-color: rgb(0, 209, 0);color:white;font-weight: bold;">Open Cash Box</button>
+            </div>         
+            <div class="termintrans">
+                <button type="button" id="ttrans" style="background-color: rgb(0, 209, 0);color:white;font-weight: bold;">Terminate Transaction</button>
+            </div>
+            <div class="goods">
+                <button type="button" id="good" style="background-color: rgb(0, 209, 0);color:white;font-weight: bold;">Goods Return</button>
+            </div>
+            <div class="print">
+                <button type="button" onclick="printItem()" id="print-bill" style="background-color: rgb(0, 209, 0);color:white;font-weight: bold;">Print</button>
+            </div>
+            <div class="cancelitem">
+                <button type="button" onclick="cancelItem()" id="cancel-item" style="background-color: rgb(0, 209, 0);color:white;font-weight: bold;">Cancel Item</button>
+            </div>
+            <div class="additem">
+                <button type="button" id="add-item" style="background-color: rgb(0, 209, 0);color:white;font-weight: bold;">Add Item</button>
+            </div>
+
+
+            <div class="bill">
+                <button type="button" onclick="genBill()"  id="gen-bill" style="background-color: orange;color:white;font-weight: bold;"><i class="fa fa-play" style="font-size:14px;color: black;"></i> Bill</button>
+
+            </div>
+            <div class="fived">
+                <button type="button" onclick="fiveDollar()" id="fivedollar" style="background-color: orange;color:white;font-weight: bold;">$5</button>
+
+            </div>
+            <div class="fiftyd">
+                <button type="button" onclick="fiftyDollar()" id="fiftydollar" style="background-color: orange;color:white;font-weight: bold;">$50</button>
+
+            </div>
+            <div class="giftvoucher">
+                <button type="button" id="giftv" style="background-color: orange;color:white;font-weight: bold;">Gift Voucher</button>
+
+            </div>
+            <div class="restrans">
+                <button type="button" id="rtrans" style="background-color: rgb(0, 209, 0);color:white;font-weight: bold;">Reserved Transaction</button>
+
+            </div>
+            <div class="restore">
+                <button type="button" id="res" style="background-color: rgb(0, 209, 0);color:white;font-weight: bold;">Restore</button>
+
+            </div>
+            <div class="deletetrans">
+                <button type="button" id="delete-transaction" style="background-color: rgb(0, 209, 0);color:white;font-weight: bold;">Delete All Transaction</button>
+
+            </div>
+            <div class="mainmenu">
+                <button type="button" id="main-menu" style="background-color: rgb(0, 209, 0);color:white;font-weight: bold;">Main Menu</button>
+
+            </div>
+            
+        </div>
+
+    </div>
+    <script type="text/javascript" src="billingpage.js"></script>
+</body>
+</html>
