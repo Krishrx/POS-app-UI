@@ -1,6 +1,6 @@
 # POS App UI Web Project
 This project is a Point of Sale (POS) application user interface (UI) implemented using HTML, CSS, and JavaScript. The purpose of this project is to provide a user-friendly interface for managing cooldrinks and snacks, generating bills, accepting payments, and calculating change.
-**Check it out ** [documentation](https://pos-app-ui.onrender.com/)
+**Check it out** https://pos-app-ui.onrender.com/
 
 # Features
 - Add Cooldrinks: Users can add cooldrinks to the order by selecting from a list of available options.
