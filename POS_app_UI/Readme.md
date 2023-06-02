@@ -19,9 +19,8 @@ This project is a Point of Sale (POS) application implemented using HTML, CSS, a
 - Click the payment amount in the provided field and the change will be automatically calculated and displayed.
 - Click on "Print" to print the bill.
 - Click "New Bill" to start over.
+- **P.S Functionality for some buttons hasn't been implemented,so it doesn't work.** 
 # Technologies Used
 - HTML: Used for creating the structure and content of the web page.
 - CSS: Used for styling the user interface and making it visually appealing.
 - JavaScript: Used for implementing the functionality of the POS application.
-
-**P.S Functionality for some buttons hasn't been implemented,so it doesn't work.** 
