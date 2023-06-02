@@ -2,7 +2,7 @@
 This project is a Point of Sale (POS) application user interface (UI) implemented using HTML, CSS, and JavaScript. The purpose of this project is to provide a user-friendly interface for managing cooldrinks and snacks, generating bills, accepting payments, and calculating change.
 
 # Features
--Add Cooldrinks: Users can add cooldrinks to the order by selecting from a list of available options.
+- Add Cooldrinks: Users can add cooldrinks to the order by selecting from a list of available options.
 Add Snacks: Users can add snacks to the order by selecting from a list of available options.
 Generate Bill: The application calculates the total cost of the order, including cooldrinks and snacks, and generates a bill for the user.
 Accept Payment: Users can input the amount of money provided by the customer.
